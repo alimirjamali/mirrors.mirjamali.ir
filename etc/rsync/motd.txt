@@ -1,0 +1,15 @@
+MOTD:  _________________________________ 
+MOTD: < Welcome to mirrors.mirjamali.ir >
+MOTD:  --------------------------------- 
+MOTD:    \
+MOTD:     \
+MOTD:         .--.
+MOTD:        |o_o |
+MOTD:        |:_/ |
+MOTD:       //   \ \
+MOTD:      (|     | )
+MOTD:     /'\_   _/`\
+MOTD:     \___)=(___/
+MOTD: 
+MOTD: 
+MOTD: Only locally stored mirrors are available via rsync 
