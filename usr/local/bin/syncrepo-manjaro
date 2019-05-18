@@ -20,7 +20,7 @@ lock="/var/lock/syncrepo-manjaro.lck"
 # If you want to limit the bandwidth used by rsync set this.
 # Use 0 to disable the limit.
 # The default unit is KiB (see man rsync /--bwlimit for more)
-bwlimit=1000
+bwlimit=4000
 
 # The source URL of the mirror you want to sync from.
 # Please refer to Manjaro wiki for other options

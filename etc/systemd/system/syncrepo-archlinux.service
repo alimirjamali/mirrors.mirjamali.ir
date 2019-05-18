@@ -1,0 +1,10 @@
+[Unit]
+Description=Synchronize archlinux package repository mirror
+RequiresMountsFor=/srv/mirrors/archlinux
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/syncrepo-archlinux
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
