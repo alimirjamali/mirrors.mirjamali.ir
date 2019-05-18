@@ -1,0 +1,10 @@
+[Unit]
+Description=Hourly Manjaro repository sync
+
+[Timer]
+OnCalendar=hourly
+AccuracySec=1m
+Persistent=true
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,10 @@
+[Unit]
+Description=Synchronize Manjaro package repository mirror
+RequiresMountsFor=/srv/mirrors/manjaro
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/syncrepo-manjaro
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7

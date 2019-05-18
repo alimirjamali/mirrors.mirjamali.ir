@@ -1,0 +1,58 @@
+#!/bin/bash
+
+# NOTE: This script updates the Manjaro Repo
+
+# This is a simple mirroring script. Unlike Arch, Manjaro does ot provide timestamps.
+# Therefore, the entire Repo has to be rsynced every few hours (according to Manjaro Wiki)
+# Run this script via cron or systemd/Timers to keep the Repo updated.
+
+# Directory where the repo is stored locally. Example: /srv/mirrors/manjaro
+target="/srv/mirrors/manjaro"
+
+# Directory where files are downloaded to before being moved in place.
+# This should be on the same filesystem as $target, but not a subdirectory of $target.
+# Example: /srv/tmp/syncrepo-manaro-tmp
+tmp="/srv/tmp/syncrepo-manjaro-tmp"
+
+# Lockfile path
+lock="/var/lock/syncrepo-manjaro.lck"
+
+# If you want to limit the bandwidth used by rsync set this.
+# Use 0 to disable the limit.
+# The default unit is KiB (see man rsync /--bwlimit for more)
+bwlimit=1000
+
+# The source URL of the mirror you want to sync from.
+# Please refer to Manjaro wiki for other options
+source_url='rsync://mirror.yandex.ru/mirrors/manjaro/'
+
+#### END CONFIG
+
+[ ! -d "${target}" ] && mkdir -p "${target}"
+[ ! -d "${tmp}" ] && mkdir -p "${tmp}"
+
+exec 9>"${lock}"
+flock -n 9 || exit
+
+rsync_cmd() {
+	local -a cmd=(rsync -rtlH --safe-links --delete-after ${VERBOSE} "--timeout=600" "--contimeout=60" -p \
+		--delay-updates --no-motd "--temp-dir=${tmp}")
+
+	if stty &>/dev/null; then
+		cmd+=(-h -v --progress --stats)
+	fi
+
+	if ((bwlimit>0)); then
+		cmd+=("--bwlimit=$bwlimit")
+	fi
+
+	"${cmd[@]}" "$@"
+}
+
+### Including other and sources
+rsync_cmd \
+	--exclude='*.links.tar.gz*' \
+	"${source_url}" \
+	"${target}"
+
+#echo "Last sync was $(date -d @$(cat ${target}/lastsync))"
