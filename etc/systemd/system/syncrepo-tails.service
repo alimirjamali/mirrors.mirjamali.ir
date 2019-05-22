@@ -1,0 +1,10 @@
+[Unit]
+Description=Synchronize Tails mirror
+RequiresMountsFor=/srv/mirrors/tails
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/syncrepo-tails
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7

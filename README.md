@@ -4,7 +4,7 @@ This repository contains bash scripts, systemd units, rsync daemon configuration
 These files are ordinary bash scripts which should be copied to **/usr/local/bin**
 ### Systemd Timers and Services
 Instead of using cron to run sync scripts periodically, I am using systemd timers.
-Copy them to **/etc/systemd/system**; Then enable/start them with systemctl.
+Copy them to **/etc/systemd/system**; Enable/Start timer or service with systemctl.
 ### HTML and CSS
 Obviously these files are for the webserver (/var/www).
 ## Credits

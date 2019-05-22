@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# NOTE: This script updates the Tails Repo
+
+# This is a simple mirroring script. Tails mirror should be synced every hour + a random time 
+# Instructions are available at https://tails.boum.org/contribute/how/mirror
+# Run this script via cron or systemd/Timers to keep the Repo updated.
+
+# Directory where the repo is stored locally. Example: /srv/mirrors/tails
+target="/srv/mirrors/tails"
+
+# Directory where files are downloaded to before being moved in place.
+# This should be on the same filesystem as $target, but not a subdirectory of $target.
+# Example: /srv/tmp/syncrepo-tails-tmp
+tmp="/srv/tmp/syncrepo-tails-tmp"
+
+# Lockfile path
+lock="/var/lock/syncrepo-tails.lck"
+
+# If you want to limit the bandwidth used by rsync set this.
+# Use 0 to disable the limit.
+# The default unit is KiB (see man rsync /--bwlimit for more)
+bwlimit=4000
+
+# The source URL of the mirror you want to sync from.
+# Please refer to Tails instructions
+source_url='mirrors.rsync.tails.boum.org::amnesia-archive'
+
+#### END CONFIG
+
+[ ! -d "${target}" ] && mkdir -p "${target}"
+[ ! -d "${tmp}" ] && mkdir -p "${tmp}"
+
+exec 9>"${lock}"
+flock -n 9 || exit
+
+rsync_cmd() {
+	local -a cmd=(rsync -rtlH --safe-links --delete-after ${VERBOSE} "--timeout=600" "--contimeout=60" -p \
+		--delay-updates "--temp-dir=${tmp}")
+
+	if stty &>/dev/null; then
+		cmd+=(-h -v --progress --stats)
+	fi
+
+	if ((bwlimit>0)); then
+		cmd+=("--bwlimit=$bwlimit")
+	fi
+
+	"${cmd[@]}" "$@"
+}
+
+### Including other and sources
+rsync_cmd \
+	"${source_url}" \
+	"${target}"
+
