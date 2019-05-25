@@ -1,0 +1,10 @@
+[Unit]
+Description=Synchronize QubesOS  mirror
+RequiresMountsFor=/srv/mirrors/qubes
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/syncrepo-qubes
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7

@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# NOTE: This script updates the QubesOS Repo
+
+# This is a simple mirroring script. Qubes mirror should be synced once every 24 hours (up to once every 6-8 hours) 
+# Instructions are available at https://www.qubes-os.org/downloads/mirrors/
+# Run this script via cron or systemd/Timers to keep the Repo updated.
+
+# Directory where the repo is stored locally. Example: /srv/mirrors/qubes
+target="/srv/mirrors/qubes"
+
+# Directory where files are downloaded to before being moved in place.
+# This should be on the same filesystem as $target, but not a subdirectory of $target.
+# Example: /srv/tmp/syncrepo-qubes-tmp
+tmp="/srv/tmp/syncrepo-qubes-tmp"
+
+# Lockfile path
+lock="/var/lock/syncrepo-qubes.lck"
+
+# If you want to limit the bandwidth used by rsync set this.
+# Use 0 to disable the limit.
+# The default unit is KiB (see man rsync /--bwlimit for more)
+bwlimit=2000
+
+# The source URL of the mirror you want to sync from.
+# Please refer to Tails instructions
+source_url='rsync://rsync.qubes-os.org/qubes-mirror'
+
+#### END CONFIG
+
+[ ! -d "${target}" ] && mkdir -p "${target}"
+[ ! -d "${tmp}" ] && mkdir -p "${tmp}"
+
+exec 9>"${lock}"
+flock -n 9 || exit
+
+rsync_cmd() {
+	local -a cmd=(rsync -rtlH --safe-links --delete-after ${VERBOSE} "--timeout=600" "--contimeout=60" -p \
+		--delay-updates "--temp-dir=${tmp}")
+
+	if stty &>/dev/null; then
+		cmd+=(-h -v --progress --stats)
+	fi
+
+	if ((bwlimit>0)); then
+		cmd+=("--bwlimit=$bwlimit")
+	fi
+
+	"${cmd[@]}" "$@"
+}
+
+### Performing the actual sync
+rsync_cmd \
+	"${source_url}" \
+	"${target}"
+

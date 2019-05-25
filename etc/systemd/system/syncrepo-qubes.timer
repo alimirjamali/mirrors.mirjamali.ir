@@ -1,0 +1,11 @@
+[Unit]
+Description=Sync QubesOS mirror 3 times a day
+
+[Timer]
+OnCalendar=*-*-* 00,08,16:00:00
+AccuracySec=1us
+Persistent=true
+RandomizedDelaySec=2400
+
+[Install]
+WantedBy=timers.target
