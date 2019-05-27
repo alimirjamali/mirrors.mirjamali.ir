@@ -1,0 +1,10 @@
+[Unit]
+Description=Synchronize GNU repository
+RequiresMountsFor=/srv/mirrors/gnu
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/syncrepo-gnu
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7

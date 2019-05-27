@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# NOTE: This script updates the GNU repository
+
+# This is a simple mirroring script. GNU repository is required (and recommended) to be updated daily. 
+# Instructions are available at https://www.gnu.org/server/mirror.html
+# Run this script via cron or systemd/Timers to keep the Repo updated.
+
+# Directory where the repo is stored locally. Example: /srv/mirrors/gnu
+target="/srv/mirrors/gnu"
+
+# Directory where files are downloaded to before being moved in place.
+# This should be on the same filesystem as $target, but not a subdirectory of $target.
+# Example: /srv/tmp/syncrepo-gnu-tmp
+tmp="/srv/tmp/syncrepo-gnu-tmp"
+
+# Lockfile path
+lock="/var/lock/syncrepo-gnu.lck"
+
+# If you want to limit the bandwidth used by rsync set this.
+# Use 0 to disable the limit.
+# The default unit is KiB (see man rsync /--bwlimit for more)
+bwlimit=2000
+
+# The source URL of the mirror you want to sync from.
+# Please refer to GNU instructions
+source_url='rsync://ftp.gnu.org/gnu/'
+
+#### END CONFIG
+
+[ ! -d "${target}" ] && mkdir -p "${target}"
+[ ! -d "${tmp}" ] && mkdir -p "${tmp}"
+
+exec 9>"${lock}"
+flock -n 9 || exit
+
+rsync_cmd() {
+	local -a cmd=(rsync -rltpHS --delete-excluded ${VERBOSE} "--timeout=600" "--contimeout=60" -p \
+		--delay-updates "--temp-dir=${tmp}")
+
+	if stty &>/dev/null; then
+		cmd+=(-h -v --progress --stats)
+	fi
+
+	if ((bwlimit>0)); then
+		cmd+=("--bwlimit=$bwlimit")
+	fi
+
+	"${cmd[@]}" "$@"
+}
+
+### Performing the actual sync
+rsync_cmd \
+	"${source_url}" \
+	"${target}"
+

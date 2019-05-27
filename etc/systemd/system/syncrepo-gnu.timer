@@ -1,0 +1,11 @@
+[Unit]
+Description=Sync GNU repository 3 times a day
+
+[Timer]
+OnCalendar=*-*-* 04,12,20:00:00
+AccuracySec=1us
+Persistent=true
+RandomizedDelaySec=2400
+
+[Install]
+WantedBy=timers.target
