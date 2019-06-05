@@ -24,7 +24,8 @@ bwlimit=2000
 
 # The source URL of the mirror you want to sync from.
 # Please refer to Tails instructions
-source_url='rsync://rsync.qubes-os.org/qubes-mirror'
+# source_url='rsync://rsync.qubes-os.org/qubes-mirror'
+source_url='rsync://mirrors.kernel.org/qubes'
 
 #### END CONFIG
 

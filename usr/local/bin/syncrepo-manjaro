@@ -24,7 +24,8 @@ bwlimit=4000
 
 # The source URL of the mirror you want to sync from.
 # Please refer to Manjaro wiki for other options
-source_url='rsync://mirror.yandex.ru/mirrors/manjaro/'
+# source_url='rsync://mirror.yandex.ru/mirrors/manjaro/'
+source_url='rsync://ftp.halifax.rwth-aachen.de/manjaro/'
 
 #### END CONFIG
 
