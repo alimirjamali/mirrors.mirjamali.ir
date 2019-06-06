@@ -8,4 +8,5 @@ Copy them to **/etc/systemd/system**; Enable/Start timer or service with systemc
 ### HTML and CSS
 Obviously these files are for the webserver (/var/www).
 ## Credits
+The original bash scripts and systemd units are based on [Archlinux's scripts](https://git.archlinux.org/infrastructure.git/tree/roles/syncrepo/).<br/>
 [Vazir fonts](https://github.com/rastikerdar/vazir-font) provided by Saber Rastikerdar.
