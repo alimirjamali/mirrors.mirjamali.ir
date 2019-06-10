@@ -98,12 +98,15 @@
 			}
 			prevScrollpos = currentScrollPos;
 		}
+		document.addEventListener('DOMContentLoaded', (event) => {
+			enableLanguageSelectionBar();;
+		});
 		-->
 	</script>
 	<link rel="icon" href="images/favicon.ico" type="image/png" />
 </head>
 
-<body onload="enableLanguageSelectionBar()">
+<body>
 <!-- Language selection bar -->
 <div id="navbar" class="languageBar">
 	<button onclick="changeLanguageToEN()">EN</button>
