@@ -1,0 +1,51 @@
+proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=mirrors:10m max_size=1000g inactive=1440m use_temp_path=off;
+proxy_cache_key "$scheme$request_uri";
+
+server {
+	listen 80;
+	listen [::]:80;
+	server_name mirrors.mirjamali.ir;
+	
+	root /var/www/mirrors.mirjamali.ir;
+	index index.html;
+
+	# These are the locally available repos
+	location ~ ^/(archlinux|gnu|qubes|tails|manjaro)/ {
+		autoindex on;
+	}
+
+	# These are the cached repos
+	location ~ ^/(alpine|astra|centos|debian|debian-cd|ius|linuxmint|linuxmint-packages|openwall|ubuntu)/ {
+		proxy_pass https://mirrors.edge.kernel.org;
+	}
+	location ~ ^/(CPAN|deepin|deepin-cd|fedora|fedora-alt|fedora-secondary|fedora-epel|gentoo|gentoo-portage|LDP|mageia|oracle|sourceware|slackware|ubuntu-releases|yocto) {
+		proxy_pass https://mirrors.kernel.org;
+	}
+
+	location ^~ /opensuse/		{ proxy_pass http://mirror.yandex.ru/opensuse/; }
+
+	# Other repos
+	location ^~ /raspbian/		{ proxy_pass https://archive.raspbian.org/raspbian/; }
+	location ^~ /rpmfusion/		{ proxy_pass https://download1.rpmfusion.org/; }
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
+
+server {
+	listen [::]:443 ssl; # managed by Certbot
+	listen 443 ssl; # managed by Certbot
+	server_name mirrors.mirjamali.ir;
+
+	location / {
+		proxy_pass http://mirrors.mirjamali.ir;
+	}
+
+	ssl_certificate /etc/letsencrypt/live/mirjamali.ir/fullchain.pem; # managed by Certbot
+	ssl_certificate_key /etc/letsencrypt/live/mirjamali.ir/privkey.pem; # managed by Certbot
+
+	include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+	ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+}
+
