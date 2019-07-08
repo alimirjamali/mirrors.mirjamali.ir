@@ -10,12 +10,12 @@ server {
 	index index.html;
 
 	# These are the locally available repos
-	location ~ ^/(archlinux|gnu|qubes|tails|manjaro)/ {
+	location ~ ^/(archlinux|centos|gnu|qubes|tails|manjaro)/ {
 		autoindex on;
 	}
 
-	# These are the cached repos
-	location ~ ^/(alpine|astra|centos|debian|debian-cd|ius|linuxmint|linuxmint-packages|openwall|ubuntu)/ {
+	# These are the cached/proxied repos
+	location ~ ^/(alpine|astra|debian|debian-cd|ius|linuxmint|linuxmint-packages|openwall|ubuntu)/ {
 		proxy_pass https://mirrors.edge.kernel.org;
 	}
 	location ~ ^/(CPAN|deepin|deepin-cd|fedora|fedora-alt|fedora-secondary|fedora-epel|gentoo|gentoo-portage|LDP|mageia|oracle|sourceware|slackware|ubuntu-releases|yocto) {
