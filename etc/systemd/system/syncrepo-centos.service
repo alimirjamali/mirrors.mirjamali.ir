@@ -1,0 +1,10 @@
+[Unit]
+Description=Synchronize Centos mirror
+RequiresMountsFor=/srv/mirrors/centos
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/syncrepo-centos
+Nice=19
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7

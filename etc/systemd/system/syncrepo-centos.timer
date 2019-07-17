@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily Centos repository sync
+
+[Timer]
+OnCalendar=daily
+AccuracySec=1us
+Persistent=true
+RandomizedDelaySec=43200
+
+[Install]
+WantedBy=timers.target
