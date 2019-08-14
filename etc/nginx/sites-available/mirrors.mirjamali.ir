@@ -1,3 +1,5 @@
+# Virtual Host configuration for mirrors.mirjamali.ir
+#
 proxy_cache_path /var/cache/nginx levels=1:2 keys_zone=mirrors:10m max_size=1000g inactive=1440m use_temp_path=off;
 proxy_cache_key "$scheme$request_uri";
 
@@ -17,6 +19,9 @@ server {
 	# These are the cached/proxied repos
 	location ~ ^/(alpine|astra|debian|debian-cd|ius|linuxmint|linuxmint-packages|openwall|ubuntu)/ {
 		proxy_pass https://mirrors.edge.kernel.org;
+		proxy_cache mirrors;
+		proxy_cache_valid 200 1d;
+		proxy_cache_use_stale error timeout invalid_header updating http_500 http_502 http_503 http_504;
 	}
 	location ~ ^/(CPAN|deepin|deepin-cd|fedora|fedora-alt|fedora-secondary|fedora-epel|gentoo|gentoo-portage|LDP|mageia|oracle|sourceware|slackware|ubuntu-releases|yocto) {
 		proxy_pass https://mirrors.kernel.org;
