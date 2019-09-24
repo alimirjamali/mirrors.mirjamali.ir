@@ -11,13 +11,13 @@ server {
 	root /var/www/mirrors.mirjamali.ir;
 	index index.html;
 
-	# These are the locally available repos
+	# These are the kernel.org locally available repos
 	location ~ ^/(archlinux|centos|gnu|qubes|tails|manjaro)/ {
 		autoindex on;
 	}
 
-	# These are the cached/proxied repos
-	location ~ ^/(alpine|astra|debian|debian-cd|ius|linuxmint|linuxmint-packages|openwall|ubuntu)/ {
+	# These are the kernel.org cached/proxied repos
+	location ~ ^/(alpine|astra|debian|debian-cd|ius|linuxmint|linuxmint-packages|opensuse|openwall|ubuntu)/ {
 		proxy_pass https://mirrors.edge.kernel.org;
 		proxy_cache mirrors;
 		proxy_cache_valid 200 1d;
@@ -25,10 +25,19 @@ server {
 	}
 	location ~ ^/(CPAN|deepin|deepin-cd|fedora|fedora-alt|fedora-secondary|fedora-epel|gentoo|gentoo-portage|LDP|mageia|oracle|sourceware|slackware|ubuntu-releases|yocto) {
 		proxy_pass https://mirrors.kernel.org;
+		proxy_cache mirrors;
+		proxy_cache_valid 200 1d;
+		proxy_cache_use_stale error timeout invalid_header updating http_500 http_502 http_503 http_504;
 	}
 
-	location ^~ /opensuse/		{ proxy_pass http://mirror.yandex.ru/opensuse/; }
-
+	# These are the FSF cached/proxied repos
+	location ~ ^/(dragora|dragora-images|gnewsense|hyperbola|parabola|trisquel|trisquel-images|ututo)/ { 
+		proxy_pass https://mirror.fsf.org; 
+		proxy_cache mirrors;
+		proxy_cache_valid 200 1d;
+		proxy_cache_use_stale error timeout invalid_header updating http_500 http_502 http_503 http_504;
+	}
+	
 	# Other repos
 	location ^~ /raspbian/		{ proxy_pass https://archive.raspbian.org/raspbian/; }
 	location ^~ /rpmfusion/		{ proxy_pass https://download1.rpmfusion.org/; }
