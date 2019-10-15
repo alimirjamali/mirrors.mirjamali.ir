@@ -12,12 +12,12 @@ server {
 	index index.html;
 
 	# These are the kernel.org locally available repos
-	location ~ ^/(archlinux|centos|gnu|qubes|tails|manjaro)/ {
+	location ~ ^/(archlinux|gnu|qubes|tails|manjaro)/ {
 		autoindex on;
 	}
 
 	# These are the kernel.org cached/proxied repos
-	location ~ ^/(alpine|astra|debian|debian-cd|ius|linuxmint|linuxmint-packages|opensuse|openwall|ubuntu)/ {
+	location ~ ^/(alpine|astra|centos|debian|debian-cd|ius|linuxmint|linuxmint-packages|opensuse|openwall|ubuntu)/ {
 		proxy_pass https://mirrors.edge.kernel.org;
 		proxy_cache mirrors;
 		proxy_cache_valid 200 1d;
