@@ -9,7 +9,7 @@ server {
 	server_name mirrors.mirjamali.ir;
 	
 	root /var/www/mirrors.mirjamali.ir;
-	index index.html;
+	index index-blackout.html index.html;
 
 	# These are the kernel.org locally available repos
 	location ~ ^/(archlinux|gnu|qubes|tails|manjaro)/ {
