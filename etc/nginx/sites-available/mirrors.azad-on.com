@@ -1,4 +1,4 @@
-# Virtual Host configuration for Tor Onion Mirror hidden service
+# Virtual Host configuration for mirrors.azad-on.com
 #
 server {
 	listen 80;
