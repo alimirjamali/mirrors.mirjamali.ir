@@ -1,0 +1,437 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="fa" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>mirrors.mirjamali.ir (mirror/cache/proxy)</title>
+	<link rel="stylesheet" type="text/css" href="css/fonts/Vazir.css" />
+	<link rel="stylesheet" href="style.css">
+<!-- Javascript code to enable a language selection bar -->
+	<script type="text/javascript">
+	<!--
+		function enableLanguageSelectionBar() {
+			var element = document.querySelectorAll(".en,.fa");
+			for (var i = 0; i < element.length; i++) {
+				element[i].originalDisplayStatus = element[i].style.display;
+			}
+			changeLanguageToFA();
+		}
+		var hideElement = function(element) {
+			element.style.display = 'none';
+		}
+		var unhideElement = function(element) {
+			element.style.display = element.originalDisplayStatus;
+		}
+		function changeLanguageToEN() {
+			document.body.style.direction = "ltr";
+			var element = document.getElementsByClassName('en');
+			for (var i = 0; i < element.length; i++) {unhideElement(element[i]);}
+			var element = document.getElementsByClassName('fa');
+			for (var i = 0; i < element.length; i++) {hideElement(element[i]);}
+		}
+		function changeLanguageToFA() {
+			document.body.style.direction = "rtl";
+			var element = document.getElementsByClassName('fa');
+			for (var i = 0; i < element.length; i++) {unhideElement(element[i]);}
+			var element = document.getElementsByClassName('en');
+			for (var i = 0; i < element.length; i++) {hideElement(element[i]);}
+		}
+		var prevScrollpos = window.pageYOffset;
+		window.onscroll = function() {
+			var currentScrollPos = window.pageYOffset;
+			if (prevScrollpos > currentScrollPos) {
+				document.getElementById("navbar").style.top = "0";
+			} else {
+				document.getElementById("navbar").style.top = "-50px";
+			}
+			prevScrollpos = currentScrollPos;
+		}
+		document.addEventListener('DOMContentLoaded', (event) => {
+			enableLanguageSelectionBar();;
+		});
+		-->
+	</script>
+	<link rel="icon" href="images/favicon.ico" type="image/png" />
+</head>
+
+<body>
+
+	<div align="center">
+
+<!-- Header of the website -->
+<header>
+<img src="images/azadan-mirror-header01.png" width="513" height="100" border="0" alt="mirrors.azad-on.com" />
+<!-- Language selection bar -->
+<div id="navbar" class="languageBar">
+	<button onclick="changeLanguageToEN()">EN</button>
+	<button onclick="changeLanguageToFA()">FA</button>
+</div>
+<!-- / Language selection bar -->
+
+</header>
+<p class="en">
+	This is a caching proxy of the
+	<a href="http://www.kernel.org/">Linux Kernel</a> and <a href="https://www.fsf.org/">FSF</a> archives.<br />
+	This website proxies <a href="http://mirrors.kernel.org">kernel.org archives of mirrors</a> and
+	<a href="http://mirror.fsf.org/">FSF mirror of free distros</a> (plus some other useful repositories).
+</p>
+<p class="fa">
+	این پایگاه، یک caching proxy به
+	<a href="http://mirrors.kernel.org/">بایگانی مخازن هسته لینوکس</a>،
+	<a href="http://mirror.fsf.org/">بایگانی بنیاد نرم‌افزارهای آزاد</a>
+	و تعدادی از مخازن دیگر است.
+</p>
+<p class="en">The following repos are rsynced and stored locally: Archlinux, GNU, Manjaro, Qubes, Tails</p>
+<p class="fa">این مخازن به صورت کامل در این پایگاه نگه‌داری می‌شوند: آرچ، گنو، مانجارو، کیوبز، تیلز.</p>
+<!-- / Header of the website -->
+
+<!-- Table of supported protocols -->
+<a name="access" id="access"></a>
+<table cellpadding="10" width="350px">
+	<tr class="en">
+		<th>Protocol</th>
+		<th>Location</th>
+	</tr>
+	<tr class="fa">
+		<th>پروتکل</th>
+		<th>نشانی</th>
+	</tr>
+	<tr>
+		<td align="center">HTTP</td>
+		<td class="ltr"><a href="http://mirrors.azad-on.com/">http://mirrors.azad-on.com/</a></td>
+	</tr>
+	<tr>
+		<td align="center">HTTPS</td>
+		<td class="ltr"><a href="https://mirrors.azad-on.com/">https://mirrors.azad-on.com/</a></td>
+	</tr>
+	<tr>
+		<td align="center">RSYNC</td>
+		<td class="ltr"><a href="rsync://mirrors.azad-on.com/">rsync://mirrors.azad-on.com/</a></td>
+	</tr>
+</table>
+<!-- / Table of supported protocols -->
+
+<!-- Main directory of mirrors -->
+<p><a name="directory" id="directory"></a></p>
+<table cellpadding="10">
+	<tr class="en">
+		<th width="85%">Repositories available on kernel.org archives</th>
+		<th width="15%">Location</th>
+	</tr>
+	<tr class="fa">
+		<th width="85%">مخازن موجود در آرشیو kernel.org</th>
+		<th width="15%">نشانی</th>
+	</tr>
+	<tr>
+		<td class="en"><a href="http://www.alpinelinux.org/">Alpine Linux</a>, a small distribution frequently used for container images</td>
+		<td class="fa"><a href="http://www.alpinelinux.org/">آلپاین لینوکس</a>، یک توزیع کوچک که بیشتر برای ساختن کانتینر استفاده می‌شود.</td>
+		<td class="ltr"><a href="alpine/"><tt>alpine</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en"><a href="http://www.archlinux.org/">Arch Linux</a>, a simple, lightweight Linux distribution.</td>
+		<td class="fa"><a href="http://www.archlinux.org/">آرچ لینوکس</a>، یک توزیع ساده و سبک لینوکس.</td>
+		<td class="ltr"><a href="archlinux/"><tt>archlinux</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en"><a href="http://www.astralinux.ru/">Astra Linux</a>, a Russian distribution that aims to better protect confidential information</td>
+		<td class="fa"><a href="http://www.astralinux.ru/">آسترا لینوکس</a>، یک توزیع روس با هدف محافظت بهتر از اطلاعات محرمانه.</td>
+		<td class="ltr"><a href="astra/"><tt>astra</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en"><a href="http://www.centos.org/">CentOS</a>, an Enterprise-class Linux
+                Distribution "derived from sources freely provided to the public by
+                <a href="http://www.redhat.com/">Red Hat</a>"</td>
+		<td class="fa">
+			<a href="http://www.centos.org/">سنت‌اواس</a>،
+			یک توزیع لینوکس در رده اینترپرایز
+			"مشتق شده از سورس آزادی که توسط
+			<a href="http://www.redhat.com/">رد هت</a>
+			در اختیار عموم گذاشته شده"
+		</td>
+		<td class="ltr"><a href="centos/"><tt>centos</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en"><a href="http://www.cpan.org/">The Comprehensive Perl Archive Network (CPAN)</a></td>
+		<td class="fa"><a href="http://www.cpan.org/">سیپن (شبکهٔ جامع بایگانی پرل)</a></td>
+		<td class="ltr"><a href="CPAN/"><tt>CPAN</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en">The <a href="http://www.debian.org/">Debian</a> Linux distribution</td>
+		<td class="fa">توزیع لینوکس <a href="http://www.debian.org/">دبیان</a>.</td>
+		<td class="ltr">
+			<a href="debian/"><tt>debian</tt></a><br/>
+			<a href="debian-cd/"><tt>debian-cd</tt></a>
+		</td>
+	</tr>
+	<tr>
+		<td class="en"><a href="https://www.deepin.org/">Deepin</a>,
+			a distribution aiming to provide an elegant desktop</td>
+		<td class="fa"><a href="https://www.deepin.org/">دیپین</a>،
+			 توزیعی با هدف ارائه دادن یک میز کار جذاب.</td>
+		<td class="ltr">
+			<a href="deepin/"><tt>deepin</tt></a><br/>
+			<a href="deepin-cd/"><tt>deepin-cd</tt></a>
+		</td>
+	</tr>
+	<tr>
+		<td class="en"><a href="http://fedoraproject.org">Fedora</a>,
+			Red Hat's "community project" Linux distribution</td>
+		<td class="fa"><a href="http://fedoraproject.org">فدورا</a>،
+			توزیع لینوکس "انجمن عمومی" ردهت.</td>
+		<td class="ltr">
+			<a href="fedora/"><tt>fedora</tt></a><br/>
+			<a href="fedora-alt/"><tt>fedora-alt</tt></a><br/>
+			<a href="fedora-secondary/"><tt>fedora-secondary</tt></a><br/>
+			<a href="fedora-epel/"><tt>fedora-epel</tt></a>
+		</td>
+	</tr>
+	<tr>
+		<td class="en"><a href="https://ius.io/">IUS</a>, a community project that
+			provides RPM packages for newer versions of select software for EL distros
+    </td>
+		<td class="fa">
+			پروژه <a href="https://ius.io/">IUS</a>، یک پروژه عمومی برای ارائه بسته‌های RPM
+			نسخه‌های جدید نرم افزارهای منتخب برای توزیع‌های EL
+		</td>
+		<td class="ltr"><a href="ius/"><tt>ius</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en"><a href="http://www.gentoo.org">Gentoo</a> Linux</td>
+		<td class="fa">لینوکس <a href="http://www.gentoo.org">گنتو</a></td>
+		<td class="ltr">
+			<a href="gentoo/"><tt>gentoo</tt></a><br/>
+			<a href="gentoo-portage/"><tt>gentoo-portage</tt></a><br/>
+		</td>
+	</tr>
+	<tr>
+		<td class="en"><a href="http://www.gnu.org/">The Free Software Foundation (The GNU Project)</a></td>
+		<td class="fa"><a href="http://www.gnu.org/">بنیاد نرم‌افزار آزاد (پروژه گنو)</a></td>
+		<td class="ltr"><a href="gnu/"><tt>gnu</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en"><a href="http://www.tldp.org/">The Linux Documentation Project</a></td>
+		<td class="fa"><a href="http://www.tldp.org/">پروژه مستند سازی لینوکس</a></td>
+		<td class="ltr"><a href="LDP/"><tt>LDP</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en"><a href="http://www.linuxmint.com">Linux Mint</a></td>
+		<td class="fa"><a href="http://www.linuxmint.com">لینوکس مینت</a></td>
+		<td class="ltr">
+			<a href="linuxmint/"><tt>linuxmint</tt></a><br/>
+			<a href="linuxmint-packages/"><tt>linuxmint-packages</tt></a><br/>
+		</td>
+	</tr>
+	<tr>
+		<td class="en"><a href="http://www.mageia.org/">Mageia</a> Project</td>
+		<td class="fa">پروژه <a href="http://www.mageia.org/">مَجیا</a></td>
+		<td class="ltr"><a href="mageia/"><tt>mageia</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en"><a href="http://www.opensuse.org/">OpenSUSE</a>,
+              Novell's "community project" Linux distribution</td>
+		<td class="fa"><a href="http://www.opensuse.org/">اوپن‌سوزه</a>، توزیع لینوکس "جامعه محور" شرکت نوول.</td>
+		<td class="ltr"><a href="opensuse/"><tt>opensuse</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en"><a href="http://www.openwall.com/">Openwall GNU/*/Linux</a>,
+                a small security-enhanced Linux distro for servers</td>
+		<td class="fa">
+			<a href="http://www.openwall.com/">اوپن وال گنو/*/لینوکس</a>،
+			یک توزیع کوچک امنیت محور برای سرورها.
+		</td>
+		<td class="ltr"><a href="openwall/"><tt>openwall</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en"><a href="http://www.oracle.com/linux">Oracle Linux</a>,
+                a repackaged distribution based on RHEL (ISOs only)</td>
+		<td class="fa">
+			<a href="http://www.oracle.com/linux">لینوکس اوراکل</a>،
+			یک توزیع بازبسته‌بندی شده بر پایه ردهت انترپرایز لینوکس (فقط فایلهای ایزو)
+		</td>
+		<td class="ltr"><a href="oracle/"><tt>oracle</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en"><a href="https://www.qubes-os.org/">Qubes OS Project</a>,
+                an OS designed to provide strong workstation security via compartmentalization</td>
+		<td class="fa">
+			<a href="https://www.qubes-os.org/">سیستم عامل کیوبز</a>،
+			سیستم عاملی که برای امنیت بالای ایستگاه کاری از طریق کانتینرسازی طراحی شده است.
+		</td>
+		<td class="ltr"><a href="qubes/"><tt>qubes</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en"><a href="http://www.sourceware.org/">sourceware.org</a>,
+              an archive of various free software, mostly development tools</td>
+		<td class="fa">
+			<a href="http://www.sourceware.org/">sourceware.org</a>،
+			مجموعه آرشیوی از نرم‌افزارهای آزاد، بیشتر ابزارهای توسعه.
+		</td>
+		<td class="ltr"><a href="sourceware/"><tt>sourceware</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en"><a href="http://www.slackware.com/">Slackware Linux</a></td>
+		<td class="fa"><a href="http://www.slackware.com/">لینوکس اسلکور</a></td>
+		<td class="ltr"><a href="slackware/"><tt>slackware</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en"><a href="https://tails.boum.org/">Tails</a>,
+              a live distribution aiming to preserve your privacy and anonimity</td>
+		<td class="fa">
+			<a href="https://tails.boum.org/">سیستم‌عامل تیلز</a>،
+			یک توزیع لینوکس لایو با محوریت حفاظت از حریم شخصی و ناشناس بودن.
+		</td>
+		<td class="ltr"><a href="tails/"><tt>tails</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en"><a href="http://www.ubuntu.com/">Ubuntu</a>,
+              a Linux distribution from <a href="http://www.canonical.com/">Canonical</a></td>
+		<td class="fa">
+			<a href="http://www.ubuntu.com/">اوبونتو</a>،
+			یک توزیع لینوکس از <a href="http://www.canonical.com/">کنونیکال</a>
+		</td>
+		<td class="ltr">
+			<a href="ubuntu/"><tt>ubuntu</tt></a><br/>
+			<a href="ubuntu-releases/"><tt>ubuntu-releases</tt></a>
+		</td>
+	</tr>
+	<tr>
+		<td class="en">The <a href="http://www.linuxfoundation.org/">Linux Foundation</a>
+              <a href="http://www.yoctoproject.org/">Yocto Project</a>, a deeply
+              embeddable Linux distribution</td>
+		<td class="fa">
+			<a href="http://www.yoctoproject.org/">پروژه Yocto</a>، پروژه‌ای از <a href="http://www.linuxfoundation.org/">بنیاد لینوکس</a>،
+			یک توزیع لینوکس سیستم‌های توکار (Embedded).
+		</td>
+		<td class="ltr"><a href="yocto/"><tt>yocto</tt></a></td>
+	</tr>
+	<tr class="en">
+		<th width="85%">Free GNU/Linux distros recommended by FSF</th>
+		<th width="15%">Location</th>
+	</tr>
+	<tr class="fa">
+		<th width="85%">توزیع‌های گنو/لینوکس مورد تایید FSF</th>
+		<th width="15%">آدرس</th>
+	</tr>
+	<tr>
+		<td class="en"><a href="https://dragora.org/en/index.html">Dragora GNU/Linux-Libre</a>,
+			an independent GNU/Linux distribution based on concepts of simplicity.
+		</td>
+		<td class="fa"><a href="https://dragora.org/en/index.html">دراگورا</a>،
+			یک توزیع مستقل، با توجه به مفهوم سادگی.</td>
+		<td class="ltr">
+			<a href="dragora/"><tt>dragora</tt></a><br />
+			<a href="dragora-images/"><tt>dragora-images</tt></a>
+		</td>
+	</tr>
+	<tr>
+		<td class="en"><a href="http://www.gnewsense.org/">gNewSense</a>,
+			a GNU/Linux distribution based on Debian, with sponsorship from the FSF.
+		</td>
+		<td class="fa"><a href="http://www.gnewsense.org/">گنوسنس</a>،
+			یک توزیع گنو/لینوکس بر اساس دبیان، اسپانسر شده توسط بنیاد نرم‌افزار آزاد.</td>
+		<td class="ltr"><a href="gnewsense/"><tt>gnewsense</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en"><a href="https://www.hyperbola.info/">Hyperbola GNU/Linux-libre</a>,
+			a long-term support simplicity-focused distribution based on Arch GNU/Linux.
+		</td>
+		<td class="fa"><a href="https://www.hyperbola.info/">هایپربولا</a>،
+			یک توزیع با پشتیبانی بلند مدت با هدف سادگی بر پایه آرچ.</td>
+		<td class="ltr"><a href="hyperbola/"><tt>hyperbola</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en"><a href="https://www.parabola.nu/">Parabola GNU/Linux-libre</a>,
+			a distribution based on Arch that prioritizes simple package and system management.
+		</td>
+		<td class="fa"><a href="https://www.parabola.nu/">پارابولا</a>، توزیعی با هدف سادگی و سبک بودن و کامل آزاد بودن بر اساس آرچ.</td>
+		<td class="ltr"><a href="parabola/"><tt>parabola</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en"><a href="https://trisquel.info/">Trisquel</a>,
+			a GNU/Linux distro based on Ubuntu oriented toward enterprises, domestic users and education.
+		</td>
+		<td class="fa"><a href="https://trisquel.info/">تریسکل</a>،
+			یک توزیع گنو/لینوکس بر اساس اوبونتو مناسب برای شرکتها، کاربران معولی و مراکز آموزشی.</td>
+		<td class="ltr">
+			<a href="trisquel/"><tt>trisquel</tt></a><br />
+			<a href="trisquel-images/"><tt>trisquel-images</tt></a>
+		</td>
+	</tr>
+	<tr>
+		<td class="en"><a href="http://www.ututo.org/">Ututo</a>,
+			a GNU/Linux 100% free distro. It was the first fully free GNU/Linux system recognized by the GNU Project.
+		</td>
+		<td class="fa"><a href="http://www.ututo.org/">اوتوتو</a>،
+			یک توزیع ۱۰۰٪ آزاد گنو/لینوکس. اولین توزیع آزاد گنو/لینوکس که توسط پروژه گنو مورد تایید قرار گرفت.</td>
+		<td class="ltr"><a href="ututo/"><tt>ututo</tt></a></td>
+	</tr>
+	<tr class="en">
+		<th width="85%">Additional repositories</th>
+		<th width="15%">Location</th>
+	</tr>
+	<tr class="fa">
+		<th width="85%">سایر موارد</th>
+		<th width="15%">آدرس</th>
+	</tr>
+	<tr>
+		<td class="en"><a href="https://manjaro.org/">Manjaro</a>,
+			an open-source Linux distrobution based on Archlinux focused on user friendliness.
+		</td>
+		<td class="fa"><a href="https://manjaro.org/">مانجارو</a>، یک توزیع لینوکس برای رایانه‌های شخصی با هدف ساده بودن.</td>
+		<td class="ltr"><a href="manjaro/"><tt>manjaro</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en"><a href="https://www.raspbian.org/">Raspbian</a>,
+			a Debian-based computer operating system for
+			<a href="https://www.raspberrypi.org/">Raspberry Pi</a>
+		</td>
+		<td class="fa"><a href="https://www.raspbian.org/">رزبین</a>، سیستم عامل آزاد بر پایه دبیان که برای استفاده در <a href="https://www.raspberrypi.org/">رزبری پی</a> بهینه سازی شده.</td>
+		<td class="ltr"><a href="raspbian/"><tt>raspbian</tt></a></td>
+	</tr>
+	<tr>
+		<td class="en"><a href="https://rpmfusion.org/">RPM Fusion</a>,
+			a software repository providing add-on packages for the Fedora distro.
+		</td>
+		<td class="fa">مخازن <a href="https://rpmfusion.org/">RPM Fusion</a>، بسته‌های اضافه برای توزیع فدورا.</td>
+		<td class="ltr"><a href="rpmfusion/"><tt>rpmfusion</tt></a></td>
+	</tr>
+</table>
+<!-- / Main directory of mirrors -->
+
+<!-- Page footer -->
+
+<footer>
+<p class="en" style="font-size: small">
+	Please note all contents are provided by the origin sites and are mirrored
+	here by automation. mirrors.mirjamali.ir is providing this as a service to
+	the general public and to the origin sites but is not responsible for any
+	content. Sources of scripts and config files are available
+	<a href="https://github.com/alimirjamali/mirrors.mirjamali.ir">here</a>.
+</p>
+<p class="fa" style="font-size: small">
+	لطفاً در نظر داشته باشید که تمامی اطلاعات از سایت(های) اصلی ارائه داده می‌شوند.
+	روند کش شدن اطلاعات به شکل اتوماتیک و از سایت اصلی است.
+	این سرویس به شکل عمومی ارائه می‌شود ولی در خصوص اطلاعات ارائه شده مسئولیتی وجود ندارد.
+	سورس اسکریپت‌ها و سایر تنظیمات استفاده شده برای این سرویس را می‌توانید در
+	<a href="https://github.com/alimirjamali/mirrors.mirjamali.ir">اینجا</a> ببینید.
+</p>
+<hr />
+<p class="en" style="text-align: center; font-size: small">
+	This mirror is maintained by Ali mirjamali.
+	You may contact me by <a href="mailto: alimirjamali@riseup.net">e-mail</a>.
+</p>
+<p class="fa" style="text-align: center; font-size: small">
+	این خدمت توسط
+	<a href="https://mirjamali.ir">علی میرجمالی</a>
+	مدیریت و نگهداری می‌شود.
+	در صورت لزوم با
+	<a href="mailto: alimirjamali@riseup.net">ایمیل</a>
+	ایشان تماس بگیرید.
+</p>
+</footer>
+<!-- / Page footer -->
+
+	</div>
+</body>
+</html>
