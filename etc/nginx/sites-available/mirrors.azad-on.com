@@ -40,8 +40,8 @@ server {
 	}
 	# :-(
 
-	ssl_certificate /etc/letsencrypt/live/azad-on/fullchain.pem; # managed by Certbot
-	ssl_certificate_key /etc/letsencrypt/live/azad-on/privkey.pem; # managed by Certbot
+	ssl_certificate /etc/letsencrypt/live/mirrors.azad-on.com/fullchain.pem; # managed by Certbot
+	ssl_certificate_key /etc/letsencrypt/live/mirrors.azad-on.com/privkey.pem; # managed by Certbot
 
 	include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
 	ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
